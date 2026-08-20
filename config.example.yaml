@@ -13,12 +13,19 @@ gateway:
   default_session: "main"
   skip_recent_rounds: 5
   cooldown_hours: 6
-  upstreams:
-    - name: "deepseek"
+    upstreams:
+    - name: claude
+      base_url: "https://wochichichi.com/v1"
+      default_model: "claude-opus-4-6"
+      models:
+        - "claude-opus-4-6"
+      api_key_env: "UPSTREAM_API_KEY"
+    - name: default
       base_url: "https://api.deepseek.com"
-      api_key_env: "OMBRE_GATEWAY_DEEPSEEK_API_KEY"
+      default_model: "deepseek-chat"
       models:
         - "deepseek-chat"
+      api_key_env: "DEEPSEEK_API_KEY"
 
 dream:
   enabled: true
