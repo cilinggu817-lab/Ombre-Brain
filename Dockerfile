@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir --force-reinstall 'mcp>=1.6.0,<2.0.0'
 
 # Copy project files / 复制项目文件
 COPY *.py .
+RUN sed -i 's/port=8000/port=8080/g' server.py
 COPY resources ./resources
 COPY scripts ./scripts
 COPY dashboard.html .
@@ -34,6 +35,6 @@ VOLUME ["/app/buckets"]
 ENV OMBRE_TRANSPORT=streamable-http
 ENV OMBRE_BUCKETS_DIR=/app/buckets
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["python", "server.py"]
